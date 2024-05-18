@@ -1,3 +1,9 @@
+import { SwitchTheme } from "@/components/SwitchTheme";
+
 export default function Page() {
-  return <div>start page</div>;
+  return (
+    <div>
+      <SwitchTheme />
+    </div>
+  );
 }
