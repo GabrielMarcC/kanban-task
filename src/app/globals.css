@@ -14,10 +14,11 @@
     --popover-foreground: 216, 15%, 57%;
 
     --primary: 242, 48%, 58%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 243, 100%, 82%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 242, 48%, 58%, 0.1;
+    --secondary: 242, 48%, 58%, 0.1;
+    --secondary-foreground: 242, 48%, 58%;
+
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -35,10 +36,10 @@
     --radius: 0.5rem;
 
     --main_purple: 242, 48%, 58%;
-    --main_purple-hover: 243, 100%, 82%;
+    --main_purple_hover: 243, 100%, 82%;
     --black_color: 237, 100%, 4%;
     --very_dark_gray: 235, 16%, 15%;
-    --dark_gray: 235, 12%, 19%;
+    --dark_gray: 235, 12%, 19%, 1;
     --lines: 236, 11%, 27%;
     --medium_gray: 216, 15%, 57%;
     --lines_light: 221, 69%, 94%;
@@ -61,7 +62,7 @@
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 100%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary-foreground: 242, 48%, 58%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;

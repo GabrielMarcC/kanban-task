@@ -1,9 +1,10 @@
-import { SwitchTheme } from "@/components/SwitchTheme";
+import { DialogDemo } from "@/components/Dialog";
 
-export default function Page() {
+export default async function Home() {
   return (
-    <div>
-      <SwitchTheme />
-    </div>
+    <main className="w-full h-full">
+      <DialogDemo />
+     
+    </main>
   );
 }

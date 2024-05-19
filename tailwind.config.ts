@@ -61,6 +61,9 @@ const config = {
         black_color: {
           DEFAULT: "hsl(var(--black_color))",
         },
+        dark_gray: {
+          DEFAULT: "hsl(var(--dark_gray))",
+        },
         very_dark_gray: {
           DEFAULT: "hsl(var(--very_dark_gray))",
         },
