@@ -13,8 +13,9 @@ import { SwitchTheme } from "./SwitchTheme";
 import { IconBoard, IconChevronUp } from "./svgs";
 import { SubTitle } from "./ui/title";
 import { useState } from "react";
+import { IconCBoard } from "./svgs/icon-cboard";
 
-export function DialogDemo() {
+export function DialogBoard() {
   const [selected, setSelected] = useState<boolean>(false);
 
   const toggle = () => {
@@ -28,15 +29,15 @@ export function DialogDemo() {
           <IconChevronUp />
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-[264px] h-[322px] rounded-lg top-[40%] p-0 gap-40 flex flex-col justify-center items-center">
-        <div className="w-full flex flex-col items-start justify-center gap-5">
-          <DialogHeader>
-            <DialogTitle>
-              <SubTitle className="uppercase text-[12px] tracking-[2.4px] leading-4 pl-20">
-                all boards
-              </SubTitle>
-            </DialogTitle>
-          </DialogHeader>
+      <DialogContent className="w-[264px] min-h-[322px]   rounded-lg top-[40%] py-2 px-0 gap-5 flex flex-col  items-center">
+        <DialogHeader>
+          <DialogTitle>
+            <SubTitle className="uppercase text-[12px] tracking-[2.4px] leading-4 p-4">
+              all boards
+            </SubTitle>
+          </DialogTitle>
+        </DialogHeader>
+        <div className="w-full h-auto flex flex-col items-start justify-start gap-2">
           {selected ? (
             <Button
               className=" flex h-12 items-center w-[90%] 
@@ -49,7 +50,7 @@ export function DialogDemo() {
             </Button>
           ) : (
             <Button
-              className="flex h-12 items-center w-[90%] 
+              className="flex h-12 items-center w-[90%] p-0
                 rounded-r-3xl bg-white dark:bg-dark_gray gap-3 border-none "
               variant="default"
               onClick={toggle}
@@ -58,6 +59,10 @@ export function DialogDemo() {
               <SubTitle>platform launch</SubTitle>
             </Button>
           )}
+          <Button className="bg-transparent text-primary ml-2 flex gap-1 w-[90%] h-12 items-center justify-center p-0">
+            <IconBoard color="#635FC7" />
+            <IconCBoard />
+          </Button>
         </div>
         <DialogFooter className="w-[80%]">
           <SwitchTheme />

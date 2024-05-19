@@ -1,12 +1,7 @@
 "use client";
 
-import { DialogDemo } from "./Dialog";
-import {
-  IconChevronUp,
-  IconLogo,
-  IconPlus,
-  IconVerticalEllipsis,
-} from "./svgs/index";
+import { DialogBoard } from "./Dialog";
+import { IconLogo, IconPlus, IconVerticalEllipsis } from "./svgs/index";
 
 import { Button } from "./ui/button";
 import { Title } from "./ui/title";
@@ -17,11 +12,11 @@ export const Header = () => {
       <div className=" flex justify-center items-center gap-4">
         <IconLogo />
         <Title>platform launch</Title>
-        <DialogDemo />
+        <DialogBoard />
       </div>
       <div className="flex items-center justify-center gap-4">
         <Button className="w-[48px] h-[32px] rounded-2xl outline-none">
-          <IconPlus />
+          <IconPlus color="#FFFFFF" />
         </Button>
         <IconVerticalEllipsis />
       </div>
