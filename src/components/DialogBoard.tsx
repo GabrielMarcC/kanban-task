@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { SwitchTheme } from "./SwitchTheme";
-import { IconBoard, IconChevronUp } from "./svgs";
+import { IconBoard, IconChevronUp, IconPlus } from "./svgs";
 import { SubTitle } from "./ui/title";
 import { useState } from "react";
 import { IconCBoard } from "./svgs/icon-cboard";
@@ -25,8 +25,8 @@ export function DialogBoard() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="border-none bg-inherit dark:bg-inherit p-0">
-          <IconChevronUp />
+        <Button className="w-[48px] h-[32px] rounded-2xl outline-none">
+          <IconPlus color="#FFFFFF" />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-[264px] min-h-[322px]   rounded-lg top-[40%] py-2 px-0 gap-5 flex flex-col  items-center">
