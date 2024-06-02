@@ -26,8 +26,29 @@ export const LoginForm = () => {
     },
   });
 
-  const onSubmit = (values: UserSchemaType) => {
-    console.log(values);
+  const onSubmit = async (values: UserSchemaType) => {
+    if (!values.email && !values.password) {
+      throw new Error("Email and password are required");
+    }
+
+    try {
+      const req = await fetch("http://localhost:3000/api/create/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+        cache: "force-cache",
+      });
+
+      if (!req.ok) {
+        throw new Error("Failed to create user");
+      }
+
+      console.log("created");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -66,8 +87,8 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" variant="default">
-          Submit
+        <Button type="submit" variant="secondary">
+          Login
         </Button>
       </form>
     </Form>
