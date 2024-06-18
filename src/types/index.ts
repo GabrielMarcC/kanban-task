@@ -23,3 +23,9 @@ export type Subtasks = {
   title: string;
   isCompleted: boolean;
 };
+
+export interface User {
+  id: string;
+  email: string;
+  password: string;
+}

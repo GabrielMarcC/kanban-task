@@ -1,13 +1,16 @@
 import { z } from "zod";
 
 export const UserSchema = z.object({
+  name: z
+    .string()
+    .min(3, {
+      message: "Name must be at least 3 characters long",
+    })
+    .optional(),
   email: z
     .string()
     .email({
       message: "Email must be a valid email address",
-    })
-    .min(10, {
-      message: "Email must be at least 3 characters long",
     })
     .max(30, {
       message: "Email must be at most 30 characters long",

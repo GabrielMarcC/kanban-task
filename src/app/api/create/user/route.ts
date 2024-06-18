@@ -4,17 +4,11 @@ import bcrypt from "bcrypt";
 
 export async function POST(request: Request) {
   try {
-    const { email, password } = await request.json();
+    const { name, email, password } = await request.json();
 
-    if (!email || !password) {
-      return new NextResponse("Name and password are required", {
-        status: 400,
-      });
-    }
-
-    if (password.length < 6) {
-      return new NextResponse("Password must be at least 6 characters long", {
-        status: 400,
+    if (!name || !email || !password) {
+      return new NextResponse("name and password are required", {
+        status: 401,
       });
     }
 
@@ -22,13 +16,15 @@ export async function POST(request: Request) {
 
     const user = await prisma.user.create({
       data: {
+        name: name,
         email: email,
         password: hash,
       },
     });
+
     return NextResponse.json(user, { status: 200 });
   } catch (error: any) {
     console.log("[POST USER]", error);
-    return new NextResponse("Internal Server Error", { status: 500 });
+    return new NextResponse("Invalid credentials", { status: 400 });
   }
 }

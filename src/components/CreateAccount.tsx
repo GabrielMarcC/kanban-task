@@ -1,41 +1,57 @@
 "use client";
-/* eslint-disable react/no-unescaped-entities */
 
-import Link from "next/link";
-import { Input } from "./ui/input";
-import { useForm } from "react-hook-form";
-import { Button } from "./ui/button";
+import { useForm, useFormState } from "react-hook-form";
 import {
   Form,
+  FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormControl,
   FormMessage,
 } from "./ui/form";
-import { UserSchema } from "@/lib/schema";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { signIn } from "next-auth/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { UserSchema } from "@/lib/schema";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import Link from "next/link";
+import { create } from "@/app/actions";
 
-export const LoginForm = () => {
+export const CreateAccount = () => {
   type UserSchemaType = z.infer<typeof UserSchema>;
+
   const form = useForm<UserSchemaType>({
     resolver: zodResolver(UserSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = async () => {};
+  const onSubmit = async (values: UserSchemaType) => {
+    create(values);
+  };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-5/6 lg:w-[30%] h-60 flex flex-col justify-center gap-3"
+        className="w-5/6 lg:w-[30%] h-96 flex flex-col justify-center gap-3"
       >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel />
+              <FormControl>
+                <Input required type="text" placeholder="username" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="email"
@@ -74,33 +90,14 @@ export const LoginForm = () => {
         />
         <div className="w-full flex justify-end">
           <Link
-            href={"/create"}
+            href={"/login"}
             className="text-sm hover:underline cursor-pointer"
           >
-            Do you don't have an account?
+            Login
           </Link>
         </div>
-        <Button
-          className="w-3/6"
-          type="submit"
-          variant="secondary"
-          onClick={() =>
-            signIn("credentials", {
-              callbackUrl: "/",
-              ...form.getValues(),
-            })
-          }
-        >
-          Login
-        </Button>
+        <Button type="submit">Create</Button>
       </form>
-      <Button
-        className="w-3/6"
-        variant="secondary"
-        onClick={() => signIn("google", { callbackUrl: "/" })}
-      >
-        Login with Google
-      </Button>
     </Form>
   );
 };

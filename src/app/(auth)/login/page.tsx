@@ -1,14 +1,9 @@
 import { LoginForm } from "@/components/LoginForm";
-import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Welcome to Kanban",
-};
-
-export default function LoginPage() {
+export default async function LoginPage() {
   return (
     <div className="w-full h-screen bg-primary flex flex-col items-center justify-center">
-      <h1>Welcome to kanban task</h1>
+      <h1 className="text-2xl font-bold ">Welcome back!</h1>
       <LoginForm />
     </div>
   );
