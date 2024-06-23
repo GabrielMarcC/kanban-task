@@ -47,8 +47,10 @@ model User {
   password      String?
   image         String?
   boards        Board[]
-  Account       Account[]
-  Session       Session[]
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model VerificationToken {
@@ -59,25 +61,38 @@ model VerificationToken {
 }
 
 model Board {
-  id          String   @id @default(cuid()) @map("_id")
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   userBoardId String   @db.ObjectId
   user        User     @relation(fields: [userBoardId], references: [id])
   createdAt   DateTime @default(now())
-  task        Task[]
+  updatedAt   DateTime @updatedAt
+  tasks       Task[]
 }
 
 model Task {
-  id        String   @id @default(cuid()) @map("_id")
-  name      String
-  status    Status
-  board     Board    @relation(fields: [boardId], references: [id])
-  boardId   String   @map("board")
-  createdAt DateTime @default(now())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  status      Status
+  boardId     String   @db.ObjectId
+  board       Board    @relation(fields: [boardId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  subtasks    Subtask[]
+}
+
+model Subtask {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  taskId      String   @db.ObjectId
+  task        Task     @relation(fields: [taskId], references: [id])
+  description String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 enum Status {
   TODO
-  IN_PROGRESS
+  DOING
   DONE
 }

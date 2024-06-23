@@ -19,3 +19,20 @@ export const UserSchema = z.object({
     message: "Password must be at least 6 characters long",
   }),
 });
+
+export const CreateBoard = z.object({
+  name: z.string().min(3, "Name must be at least 3 characters long"),
+  email: z.string().email({ message: "Invalid email" }),
+});
+
+export const CreateSubtask = z.object({
+  description: z.string(),
+});
+
+export const CreateTask = z.object({
+  boardId: z.string(),
+  name: z.string(),
+  description: z.string().optional(),
+  status: z.enum(["TODO", "DOING", "DONE"]).optional(),
+  subtask: CreateSubtask.array().optional(),
+});

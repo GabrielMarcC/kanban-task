@@ -1,13 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
+import { UserSchema } from "@/lib/schema";
 
 export async function POST(request: Request) {
   try {
-    const { name, email, password } = await request.json();
+    const { name, email, password } = UserSchema.parse(await request.json());
 
     if (!name || !email || !password) {
-      return new NextResponse("name and password are required", {
+      return new NextResponse("Name and Password are required", {
         status: 401,
       });
     }
@@ -22,9 +23,9 @@ export async function POST(request: Request) {
       },
     });
 
-    return NextResponse.json(user, { status: 200 });
+    return NextResponse.json(user, { status: 201 });
   } catch (error: any) {
     console.log("[POST USER]", error);
-    return new NextResponse("Invalid credentials", { status: 400 });
+    return new NextResponse("Missing fields", { status: 400 });
   }
 }
