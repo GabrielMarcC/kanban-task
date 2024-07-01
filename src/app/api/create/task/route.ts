@@ -4,29 +4,29 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    const { name, status, description, boardId } = CreateTask.parse(
+    const { name, status, description, columnId } = CreateTask.parse(
       await request.json()
     );
 
-    const board = await prisma.board.findUnique({
+    const column = await prisma.column.findUnique({
       where: {
-        id: boardId,
+        id: columnId,
       },
     });
 
-    if (!board) {
+    if (!column) {
       return NextResponse.json("Board not found", { status: 404 });
     }
 
     const creatTask = await prisma.task.create({
       data: {
-        boardId: boardId,
+        columnId: columnId,
         name: name,
         description: description as string,
         status: status ?? "TODO",
       },
       include: {
-        board: true,
+        column: true,
       },
     });
 

@@ -1,4 +1,4 @@
-import { prisma } from "./../../../../lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { CreateBoard } from "@/lib/schema";
 
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(createBoard, { status: 201 });
   } catch (error) {
-    console.log("[POST USER]", error);
-    return NextResponse.json("Not created", { status: 400 });
+    console.log("[POST BOARD]", error);
+    return NextResponse.json({ message: "Not created" }, { status: 400 });
   }
 }
