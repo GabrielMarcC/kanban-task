@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -52,6 +52,39 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        main_purple: {
+          DEFAULT: "hsl(var(--main_purple))",
+        },
+        main_purple_hover: {
+          DEFAULT: "hsl(var(--main_purple_hover))",
+        },
+        black_color: {
+          DEFAULT: "hsl(var(--black_color))",
+        },
+        dark_gray: {
+          DEFAULT: "hsl(var(--dark_gray))",
+        },
+        very_dark_gray: {
+          DEFAULT: "hsl(var(--very_dark_gray))",
+        },
+        lines: {
+          DEFAULT: "hsl(var(--lines))",
+        },
+        medium_gray: {
+          DEFAULT: "hsl(var(--medium_gray))",
+        },
+        lines_light: {
+          DEFAULT: "hsl(var(--lines_light))",
+        },
+        light_gray: {
+          DEFAULT: "hsl(var(--light_gray))",
+        },
+        red_color: {
+          DEFAULT: "hsl(var(--red_color))",
+        },
+        red_hover: {
+          DEFAULT: "hsl(var(--red_hover))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -75,6 +108,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
